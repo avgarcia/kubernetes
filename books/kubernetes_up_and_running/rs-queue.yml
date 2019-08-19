@@ -1,0 +1,21 @@
+apiVersion: extensions/v1beta1
+kind: ReplicaSet
+metadata:
+  name: queue
+  labels:
+    app: worker-queue
+    component: queue
+    chapter: jobs
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: worker-queue
+        component: queue
+        chapter: jobs
+    spec:
+      containers:
+        - name: queue
+          image: grc.io/kuar-demo/kuard-amd64:1
+          imagePullPolicy: Always
